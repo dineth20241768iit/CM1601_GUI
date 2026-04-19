@@ -21,25 +21,25 @@ public class MainController {
 
     @FXML
     public void showImport() {
-        loadScreen("import", null);
+        loadScreen("import");
     }
 
     @FXML
     public void showIssuedReport() {
         if (!checkImported()) return;
-        loadScreen("issued_report", null);
+        loadScreen("issued_report");
     }
 
     @FXML
     public void showAvgCost() {
         if (!checkImported()) return;
-        loadScreen("avg_cost", null);
+        loadScreen("avg_cost");
     }
 
     @FXML
     public void showAvailability() {
         if (!checkImported()) return;
-        loadScreen("availability", null);
+        loadScreen("availability");
     }
 
     // Called by ImportController after successful import
@@ -65,7 +65,7 @@ public class MainController {
         return true;
     }
 
-    private void loadScreen(String fxmlName, Object unused) {
+    private void loadScreen(String fxmlName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxmlName + ".fxml"));
             Node screen = loader.load();

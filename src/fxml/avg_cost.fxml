@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controllers.AvgCostController"
       spacing="16"
@@ -29,7 +27,7 @@
         <Label fx:id="lblAvgCost" text="—"
                style="-fx-text-fill: #89b4fa; -fx-font-size: 48px; -fx-font-weight: bold;"/>
 
-        <Label fx:id="lblBookCount" text=""
+        <Label fx:id="lblBookCount"
                style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
 
         <Button text="Calculate" onAction="#calculate"

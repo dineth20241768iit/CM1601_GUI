@@ -13,10 +13,6 @@ public class Student {
     public String getStudentId()  { return studentId; }
     public String getFirstName()  { return firstName; }
 
-    // ── Setters ──────────────────────────────────────────────────────
-    public void setStudentId(String studentId) { this.studentId = studentId; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-
     // ── Validation ───────────────────────────────────────────────────
 
     public static String validateStudentId(String studentId) {
@@ -34,10 +30,6 @@ public class Student {
     }
 
     // ── Serialisation ────────────────────────────────────────────────
-
-    public String toCsvRow() {
-        return studentId + "," + firstName;
-    }
 
     public static Student fromCsvRow(String[] row) {
         return new Student(row[0].trim(), row[1].trim());

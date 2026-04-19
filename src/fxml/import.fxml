@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-
+<?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controllers.ImportController"
       spacing="16"
@@ -53,7 +51,7 @@
             style="-fx-background-color: #89b4fa; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 8 20 8 20;"/>
 
     <!-- ── Status label ── -->
-    <Label fx:id="lblImportStatus" text=""
+    <Label fx:id="lblImportStatus"
            style="-fx-text-fill: #a6e3a1; -fx-font-size: 12px;"/>
 
     <Separator style="-fx-background-color: #45475a;"/>

@@ -50,6 +50,7 @@ public class ImportController {
         this.mainController = mainController;
     }
 
+    @SuppressWarnings("GrazieInspectionRunner")
     @FXML
     public void initialize() {
         // Wire table columns to String[] indices

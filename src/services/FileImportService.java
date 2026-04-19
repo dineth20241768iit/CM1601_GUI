@@ -10,14 +10,14 @@ import java.util.*;
 public class FileImportService {
 
     // Holds imported data
-    private List<Book> books               = new ArrayList<>();
-    private List<Student> students         = new ArrayList<>();
-    private List<Transaction> transactions = new ArrayList<>();
+    private final List<Book> books               = new ArrayList<>();
+    private final List<Student> students         = new ArrayList<>();
+    private final List<Transaction> transactions = new ArrayList<>();
 
     // Holds validation errors per file: each entry is {lineNumber, rawLine, errorMessage}
-    private List<String[]> bookErrors        = new ArrayList<>();
-    private List<String[]> studentErrors     = new ArrayList<>();
-    private List<String[]> transactionErrors = new ArrayList<>();
+    private final List<String[]> bookErrors        = new ArrayList<>();
+    private final List<String[]> studentErrors     = new ArrayList<>();
+    private final List<String[]> transactionErrors = new ArrayList<>();
 
     // ── Getters ──────────────────────────────────────────────────────
     public List<Book>        getBooks()            { return books; }
@@ -26,10 +26,6 @@ public class FileImportService {
     public List<String[]>    getBookErrors()        { return bookErrors; }
     public List<String[]>    getStudentErrors()     { return studentErrors; }
     public List<String[]>    getTransactionErrors() { return transactionErrors; }
-
-    public boolean hasErrors() {
-        return !bookErrors.isEmpty() || !studentErrors.isEmpty() || !transactionErrors.isEmpty();
-    }
 
     // ── Import all three files ────────────────────────────────────────
 

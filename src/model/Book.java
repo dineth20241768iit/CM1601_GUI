@@ -28,15 +28,6 @@ public class Book {
     public int getAvailability()    { return availability; }
     public double getPrice()        { return price; }
 
-    // ── Setters ──────────────────────────────────────────────────────
-    public void setBookId(String bookId)          { this.bookId = bookId; }
-    public void setTitle(String title)            { this.title = title; }
-    public void setIsbn(String isbn)              { this.isbn = isbn; }
-    public void setAuthor(String author)          { this.author = author; }
-    public void setCopies(int copies)             { this.copies = copies; }
-    public void setAvailability(int availability) { this.availability = availability; }
-    public void setPrice(double price)            { this.price = price; }
-
     // ── Validation ───────────────────────────────────────────────────
 
     public static String validateBookId(String bookId) {

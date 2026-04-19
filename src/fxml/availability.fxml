@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controllers.AvailabilityController"
       spacing="16"
@@ -29,7 +28,7 @@
     </HBox>
 
     <!-- ── Status ── -->
-    <Label fx:id="lblStatus" text=""
+    <Label fx:id="lblStatus"
            style="-fx-text-fill: #a6e3a1; -fx-font-size: 12px;"/>
 
     <Separator style="-fx-background-color: #45475a;"/>
@@ -38,13 +37,13 @@
     <TableView fx:id="tblResults" VBox.vgrow="ALWAYS"
                style="-fx-background-color: #313244; -fx-border-color: #45475a; -fx-border-radius: 6;">
         <columns>
-            <TableColumn fx:id="colBookId"      text="Book ID"     prefWidth="80"/>
+            <TableColumn fx:id="colBookId"      text="Book ID"/>
             <TableColumn fx:id="colTitle"        text="Title"       prefWidth="180"/>
             <TableColumn fx:id="colIsbn"         text="ISBN"        prefWidth="140"/>
             <TableColumn fx:id="colAuthor"       text="Author"      prefWidth="140"/>
             <TableColumn fx:id="colCopies"       text="Copies"      prefWidth="70"/>
-            <TableColumn fx:id="colAvailability" text="Available"   prefWidth="80"/>
-            <TableColumn fx:id="colPrice"        text="Price"       prefWidth="80"/>
+            <TableColumn fx:id="colAvailability" text="Available"/>
+            <TableColumn fx:id="colPrice"        text="Price"/>
         </columns>
         <placeholder>
             <Label text="No results. Enter a search query above."
@@ -53,7 +52,7 @@
     </TableView>
 
     <!-- ── Result count ── -->
-    <Label fx:id="lblCount" text=""
+    <Label fx:id="lblCount"
            style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
 
 </VBox>

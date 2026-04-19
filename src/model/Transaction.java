@@ -26,23 +26,11 @@ public class Transaction {
     public String getDate()           { return date; }
     public String getBookId()         { return bookId; }
     public String getStudentId()      { return studentId; }
-    public int getTransactionType()   { return transactionType; }
-
-    // ── Setters ──────────────────────────────────────────────────────
-    public void setDate(String date)                     { this.date = date; }
-    public void setBookId(String bookId)                 { this.bookId = bookId; }
-    public void setStudentId(String studentId)           { this.studentId = studentId; }
-    public void setTransactionType(int transactionType)  { this.transactionType = transactionType; }
 
     // ── Helpers ──────────────────────────────────────────────────────
     public boolean isIssue()  { return transactionType == TYPE_ISSUE; }
-    public boolean isReturn() { return transactionType == TYPE_RETURN; }
 
     public String getTypeLabel() { return isIssue() ? "Issue" : "Return"; }
-
-    public LocalDate toLocalDate() {
-        return LocalDate.parse(date, FORMATTER);
-    }
 
     // ── Validation ───────────────────────────────────────────────────
 
@@ -64,10 +52,6 @@ public class Transaction {
     }
 
     // ── Serialisation ────────────────────────────────────────────────
-
-    public String toCsvRow() {
-        return String.join(",", date, bookId, studentId, String.valueOf(transactionType));
-    }
 
     public static Transaction fromCsvRow(String[] row) {
         return new Transaction(

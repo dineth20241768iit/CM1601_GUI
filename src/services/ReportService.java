@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 public class ReportService {
 
-    private List<Book>        books;
-    private List<Student>     students;
-    private List<Transaction> transactions;
+    private final List<Book>        books;
+    private final List<Student>     students;
+    private final List<Transaction> transactions;
 
     public ReportService(List<Book> books, List<Student> students, List<Transaction> transactions) {
         this.books        = books;
