@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.ImportController"
+      spacing="16"
+      style="-fx-background-color: #1e1e2e;">
+
+    <!-- ── Header ── -->
+    <Label text="Import CSV Files"
+           style="-fx-text-fill: #cdd6f4; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <Label text="Select each CSV file to import. Invalid rows will be shown below for correction."
+           style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
+
+    <!-- ── File selectors ── -->
+    <GridPane hgap="12" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="120"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints minWidth="90"/>
+        </columnConstraints>
+
+        <Label text="Books CSV:" style="-fx-text-fill: #cdd6f4;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtBookPath" promptText="Path to book.csv" editable="false"
+                   style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Button text="Browse" onAction="#browseBooks"
+                style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"
+                GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+        <Label text="Students CSV:" style="-fx-text-fill: #cdd6f4;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtStudentPath" promptText="Path to student.csv" editable="false"
+                   style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Button text="Browse" onAction="#browseStudents"
+                style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"
+                GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+        <Label text="Transactions CSV:" style="-fx-text-fill: #cdd6f4;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtTransactionPath" promptText="Path to transactions.csv" editable="false"
+                   style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Button text="Browse" onAction="#browseTransactions"
+                style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"
+                GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+    </GridPane>
+
+    <Button text="Import All Files" onAction="#importAll"
+            style="-fx-background-color: #89b4fa; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 8 20 8 20;"/>
+
+    <!-- ── Status label ── -->
+    <Label fx:id="lblImportStatus" text=""
+           style="-fx-text-fill: #a6e3a1; -fx-font-size: 12px;"/>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+    <!-- ── Errors section ── -->
+    <Label text="Validation Errors"
+           style="-fx-text-fill: #f38ba8; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <Label text="Select a row and click Edit to correct it."
+           style="-fx-text-fill: #6c7086; -fx-font-size: 11px;"/>
+
+    <TabPane fx:id="errorTabs" style="-fx-background-color: #1e1e2e;" VBox.vgrow="ALWAYS">
+
+        <Tab text="Book Errors" closable="false">
+            <VBox spacing="8">
+                <TableView fx:id="tblBookErrors" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: #313244; -fx-border-color: #45475a; -fx-border-radius: 6;">
+                    <columns>
+                        <TableColumn fx:id="colBookLine" text="Line" prefWidth="50"/>
+                        <TableColumn fx:id="colBookRaw"  text="Raw Data" prefWidth="300"/>
+                        <TableColumn fx:id="colBookError" text="Error" prefWidth="280"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="8">
+                    <TextField fx:id="txtBookCorrection" promptText="Enter corrected CSV row..."
+                               HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"/>
+                    <Button text="Apply Fix" onAction="#fixBookError"
+                            style="-fx-background-color: #a6e3a1; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Student Errors" closable="false">
+            <VBox spacing="8">
+                <TableView fx:id="tblStudentErrors" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: #313244; -fx-border-color: #45475a; -fx-border-radius: 6;">
+                    <columns>
+                        <TableColumn fx:id="colStudentLine"  text="Line" prefWidth="50"/>
+                        <TableColumn fx:id="colStudentRaw"   text="Raw Data" prefWidth="300"/>
+                        <TableColumn fx:id="colStudentError" text="Error" prefWidth="280"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="8">
+                    <TextField fx:id="txtStudentCorrection" promptText="Enter corrected CSV row..."
+                               HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"/>
+                    <Button text="Apply Fix" onAction="#fixStudentError"
+                            style="-fx-background-color: #a6e3a1; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Transaction Errors" closable="false">
+            <VBox spacing="8">
+                <TableView fx:id="tblTransactionErrors" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: #313244; -fx-border-color: #45475a; -fx-border-radius: 6;">
+                    <columns>
+                        <TableColumn fx:id="colTransactionLine"  text="Line" prefWidth="50"/>
+                        <TableColumn fx:id="colTransactionRaw"   text="Raw Data" prefWidth="300"/>
+                        <TableColumn fx:id="colTransactionError" text="Error" prefWidth="280"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="8">
+                    <TextField fx:id="txtTransactionCorrection" promptText="Enter corrected CSV row..."
+                               HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"/>
+                    <Button text="Apply Fix" onAction="#fixTransactionError"
+                            style="-fx-background-color: #a6e3a1; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+
+</VBox>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.AvgCostController"
+      spacing="16"
+      style="-fx-background-color: #1e1e2e;">
+
+    <!-- ── Header ── -->
+    <Label text="Average Book Cost"
+           style="-fx-text-fill: #cdd6f4; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <Label text="Calculates the average price of all books currently in the library."
+           style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+    <!-- ── Result card ── -->
+    <VBox alignment="CENTER" spacing="12"
+          style="-fx-background-color: #313244; -fx-background-radius: 10; -fx-padding: 40;"
+          VBox.vgrow="ALWAYS">
+
+        <Label text="Average Cost of Books"
+               style="-fx-text-fill: #6c7086; -fx-font-size: 14px;"/>
+
+        <Label fx:id="lblAvgCost" text="—"
+               style="-fx-text-fill: #89b4fa; -fx-font-size: 48px; -fx-font-weight: bold;"/>
+
+        <Label fx:id="lblBookCount" text=""
+               style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
+
+        <Button text="Calculate" onAction="#calculate"
+                style="-fx-background-color: #89b4fa; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 8 24 8 24;"/>
+
+    </VBox>
+
+</VBox>

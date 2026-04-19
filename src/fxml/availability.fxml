@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.AvailabilityController"
+      spacing="16"
+      style="-fx-background-color: #1e1e2e;">
+
+    <!-- ── Header ── -->
+    <Label text="Book Availability Search"
+           style="-fx-text-fill: #cdd6f4; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <Label text="Search by title. Use * at the end as a wildcard (e.g. Java*)."
+           style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
+
+    <!-- ── Search row ── -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <TextField fx:id="txtSearch"
+                   promptText="Enter title or prefix with *..."
+                   HBox.hgrow="ALWAYS"
+                   style="-fx-background-color: #313244; -fx-text-fill: #cdd6f4; -fx-prompt-text-fill: #6c7086; -fx-background-radius: 6; -fx-padding: 6 10 6 10;"/>
+        <Button text="Search" onAction="#search"
+                style="-fx-background-color: #89b4fa; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 16 6 16;"/>
+        <Button text="Export Results" onAction="#exportResults"
+                style="-fx-background-color: #a6e3a1; -fx-text-fill: #1e1e2e; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 16 6 16;"/>
+    </HBox>
+
+    <!-- ── Status ── -->
+    <Label fx:id="lblStatus" text=""
+           style="-fx-text-fill: #a6e3a1; -fx-font-size: 12px;"/>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+    <!-- ── Results table ── -->
+    <TableView fx:id="tblResults" VBox.vgrow="ALWAYS"
+               style="-fx-background-color: #313244; -fx-border-color: #45475a; -fx-border-radius: 6;">
+        <columns>
+            <TableColumn fx:id="colBookId"      text="Book ID"     prefWidth="80"/>
+            <TableColumn fx:id="colTitle"        text="Title"       prefWidth="180"/>
+            <TableColumn fx:id="colIsbn"         text="ISBN"        prefWidth="140"/>
+            <TableColumn fx:id="colAuthor"       text="Author"      prefWidth="140"/>
+            <TableColumn fx:id="colCopies"       text="Copies"      prefWidth="70"/>
+            <TableColumn fx:id="colAvailability" text="Available"   prefWidth="80"/>
+            <TableColumn fx:id="colPrice"        text="Price"       prefWidth="80"/>
+        </columns>
+        <placeholder>
+            <Label text="No results. Enter a search query above."
+                   style="-fx-text-fill: #6c7086;"/>
+        </placeholder>
+    </TableView>
+
+    <!-- ── Result count ── -->
+    <Label fx:id="lblCount" text=""
+           style="-fx-text-fill: #6c7086; -fx-font-size: 12px;"/>
+
+</VBox>

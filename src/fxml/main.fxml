@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.MainController"
+            prefWidth="900" prefHeight="620"
+            style="-fx-background-color: #1e1e2e;">
+
+    <!-- ── Sidebar ── -->
+    <left>
+        <VBox spacing="8" style="-fx-background-color: #2a2a3e; -fx-padding: 24 16 24 16; -fx-min-width: 200;">
+
+            <Label text="CM1601 LMS"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0 0 16 0;"/>
+
+            <Button fx:id="btnImport"
+                    text="Import Files"
+                    maxWidth="Infinity"
+                    onAction="#showImport"
+                    style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-font-size: 13px; -fx-padding: 10 16 10 16; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+            <Button fx:id="btnIssuedReport"
+                    text="Issued Report"
+                    maxWidth="Infinity"
+                    onAction="#showIssuedReport"
+                    style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-font-size: 13px; -fx-padding: 10 16 10 16; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+            <Button fx:id="btnAvgCost"
+                    text="Average Cost"
+                    maxWidth="Infinity"
+                    onAction="#showAvgCost"
+                    style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-font-size: 13px; -fx-padding: 10 16 10 16; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+            <Button fx:id="btnAvailability"
+                    text="Book Availability"
+                    maxWidth="Infinity"
+                    onAction="#showAvailability"
+                    style="-fx-background-color: #45475a; -fx-text-fill: #cdd6f4; -fx-font-size: 13px; -fx-padding: 10 16 10 16; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Label fx:id="lblStatus"
+                   text="No files imported"
+                   wrapText="true"
+                   style="-fx-text-fill: #6c7086; -fx-font-size: 11px;"/>
+        </VBox>
+    </left>
+
+    <!-- ── Content area — screens load here ── -->
+    <center>
+        <StackPane fx:id="contentArea"
+                   style="-fx-background-color: #1e1e2e; -fx-padding: 24;">
+            <Label text="Select an option from the sidebar to begin."
+                   style="-fx-text-fill: #6c7086; -fx-font-size: 14px;"/>
+        </StackPane>
+    </center>
+
+</BorderPane>
