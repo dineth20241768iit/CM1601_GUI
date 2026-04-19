@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class ReportService {
 
     private final List<Book>        books;
@@ -23,7 +24,9 @@ public class ReportService {
         this.transactions = transactions;
     }
 
-    // ── Books issued report ───────────────────────────────────────────
+    public List<Book> getBooks() { return books; }
+
+    //  Books issued report
 
     // Returns all transactions of type ISSUE for a given date string (DD/MM/YYYY)
     public List<Transaction> getIssuedOnDate(String date) {
@@ -51,7 +54,7 @@ public class ReportService {
         return rows;
     }
 
-    // ── Average cost ──────────────────────────────────────────────────
+    //  Average cost
 
     public double getAverageCost() {
         if (books.isEmpty()) return 0.0;
@@ -59,7 +62,7 @@ public class ReportService {
         return total / books.size();
     }
 
-    // ── Availability search ───────────────────────────────────────────
+    //  Availability search
 
     // Supports wildcard * at the end of the query (e.g. "Jav*" matches "Java", "JavaScript")
     public List<Book> searchByTitle(String query) {
@@ -77,7 +80,7 @@ public class ReportService {
                 .collect(Collectors.toList());
     }
 
-    // ── Export search results ─────────────────────────────────────────
+    //  Export search results
 
     public boolean exportSearchResults(List<Book> results, String outputPath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
