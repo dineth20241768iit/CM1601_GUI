@@ -16,14 +16,6 @@ public record Book(String bookId, String title, String isbn, String author, int 
         String cleaned = isbn.replace("-", "").replace(" ", "");
         if (!cleaned.matches("\\d{13}"))
             return "ISBN-13 must be exactly 13 digits.";
-
-        int total = 0;
-        for (int i = 0; i < 13; i++) {
-            int digit = Character.getNumericValue(cleaned.charAt(i));
-            total += (i % 2 == 0) ? digit : digit * 3;
-        }
-        if (total % 10 != 0)
-            return "ISBN-13 check digit is invalid.";
         return null;
     }
 
