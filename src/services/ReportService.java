@@ -7,7 +7,6 @@ import model.Transaction;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -40,13 +39,13 @@ public class ReportService {
         List<String[]> rows = new ArrayList<>();
         for (Transaction t : getIssuedOnDate(date)) {
             String title = books.stream()
-                    .filter(b -> b.getBookId().equalsIgnoreCase(t.getBookId()))
-                    .map(Book::getTitle)
+                    .filter(b -> b.bookId().equalsIgnoreCase(t.getBookId()))
+                    .map(Book::title)
                     .findFirst().orElse("Unknown");
 
             String name = students.stream()
-                    .filter(s -> s.getStudentId().equals(t.getStudentId()))
-                    .map(Student::getFirstName)
+                    .filter(s -> s.studentId().equals(t.getStudentId()))
+                    .map(Student::firstName)
                     .findFirst().orElse("Unknown");
 
             rows.add(new String[]{t.getDate(), t.getBookId(), title, t.getStudentId(), name});
@@ -58,7 +57,7 @@ public class ReportService {
 
     public double getAverageCost() {
         if (books.isEmpty()) return 0.0;
-        double total = books.stream().mapToDouble(Book::getPrice).sum();
+        double total = books.stream().mapToDouble(Book::price).sum();
         return total / books.size();
     }
 
@@ -71,12 +70,12 @@ public class ReportService {
         if (query.endsWith("*")) {
             String prefix = query.substring(0, query.length() - 1).toLowerCase();
             return books.stream()
-                    .filter(b -> b.getTitle().toLowerCase().startsWith(prefix))
+                    .filter(b -> b.title().toLowerCase().startsWith(prefix))
                     .collect(Collectors.toList());
         }
 
         return books.stream()
-                .filter(b -> b.getTitle().equalsIgnoreCase(query))
+                .filter(b -> b.title().equalsIgnoreCase(query))
                 .collect(Collectors.toList());
     }
 

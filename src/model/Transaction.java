@@ -10,10 +10,10 @@ public class Transaction {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    private String date;
-    private String bookId;
-    private String studentId;
-    private int transactionType;
+    private final String date;
+    private final String bookId;
+    private final String studentId;
+    private final int transactionType;
 
     public Transaction(String date, String bookId, String studentId, int transactionType) {
         this.date            = date;

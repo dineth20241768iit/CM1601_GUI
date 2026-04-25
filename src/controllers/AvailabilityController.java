@@ -33,14 +33,14 @@ public class AvailabilityController {
 
     @FXML
     public void initialize() {
-        colBookId.setCellValueFactory(d      -> new javafx.beans.property.SimpleStringProperty(d.getValue().getBookId()));
-        colTitle.setCellValueFactory(d       -> new javafx.beans.property.SimpleStringProperty(d.getValue().getTitle()));
-        colIsbn.setCellValueFactory(d        -> new javafx.beans.property.SimpleStringProperty(d.getValue().getIsbn()));
-        colAuthor.setCellValueFactory(d      -> new javafx.beans.property.SimpleStringProperty(d.getValue().getAuthor()));
-        colCopies.setCellValueFactory(d      -> new javafx.beans.property.SimpleIntegerProperty(d.getValue().getCopies()).asObject());
-        colAvailability.setCellValueFactory(d -> new javafx.beans.property.SimpleIntegerProperty(d.getValue().getAvailability()).asObject());
+        colBookId.setCellValueFactory(d      -> new javafx.beans.property.SimpleStringProperty(d.getValue().bookId()));
+        colTitle.setCellValueFactory(d       -> new javafx.beans.property.SimpleStringProperty(d.getValue().title()));
+        colIsbn.setCellValueFactory(d        -> new javafx.beans.property.SimpleStringProperty(d.getValue().isbn()));
+        colAuthor.setCellValueFactory(d      -> new javafx.beans.property.SimpleStringProperty(d.getValue().author()));
+        colCopies.setCellValueFactory(d      -> new javafx.beans.property.SimpleIntegerProperty(d.getValue().copies()).asObject());
+        colAvailability.setCellValueFactory(d -> new javafx.beans.property.SimpleIntegerProperty(d.getValue().availability()).asObject());
         colPrice.setCellValueFactory(d       -> new javafx.beans.property.SimpleStringProperty(
-                String.format("$%.2f", d.getValue().getPrice())));
+                String.format("$%.2f", d.getValue().price())));
     }
 
     @FXML

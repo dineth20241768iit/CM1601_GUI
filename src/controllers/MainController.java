@@ -26,19 +26,19 @@ public class MainController {
 
     @FXML
     public void showIssuedReport() {
-        if (!checkImported()) return;
+        if (checkImported()) return;
         loadScreen("issued_report");
     }
 
     @FXML
     public void showAvgCost() {
-        if (!checkImported()) return;
+        if (checkImported()) return;
         loadScreen("avg_cost");
     }
 
     @FXML
     public void showAvailability() {
-        if (!checkImported()) return;
+        if (checkImported()) return;
         loadScreen("availability");
     }
 
@@ -60,9 +60,9 @@ public class MainController {
         if (reportService == null) {
             lblStatus.setStyle("-fx-text-fill: #f38ba8; -fx-font-size: 11px;");
             lblStatus.setText("Import files first.");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void loadScreen(String fxmlName) {

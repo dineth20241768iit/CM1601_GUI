@@ -1,17 +1,6 @@
 package model;
 
-public class Student {
-    private String studentId;
-    private String firstName;
-
-    public Student(String studentId, String firstName) {
-        this.studentId = studentId;
-        this.firstName = firstName;
-    }
-
-    // ── Getters ──────────────────────────────────────────────────────
-    public String getStudentId()  { return studentId; }
-    public String getFirstName()  { return firstName; }
+public record Student(String studentId, String firstName) {
 
     // ── Validation ───────────────────────────────────────────────────
 

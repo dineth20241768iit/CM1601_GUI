@@ -1,14 +1,12 @@
 package controllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import services.FileImportService;
 
 import java.io.File;
-import java.util.List;
 
 public class ImportController {
 
