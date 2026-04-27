@@ -8,7 +8,8 @@ public class Transaction {
     public static final int TYPE_ISSUE  = 1;
     public static final int TYPE_RETURN = 2;
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/uuuu")
+        .withResolverStyle(java.time.format.ResolverStyle.STRICT);
 
     private final String date;
     private final String bookId;
@@ -36,7 +37,7 @@ public class Transaction {
 
     public static String validateDate(String date) {
         if (date == null || !date.matches("\\d{2}/\\d{2}/\\d{4}"))
-            return "Date must be in format DD/MM/YYYY.";
+            return "Date must be in format DD/MM/uuuu.";
         try {
             LocalDate.parse(date, FORMATTER);
         } catch (DateTimeParseException e) {
