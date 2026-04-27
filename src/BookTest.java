@@ -25,3 +25,24 @@ public class BookTest {
     public void testInvalidIsbn() {
         assertNotNull(Book.validateIsbn("123"));
     }
+
+    @Test
+    public void testValidStudentId() {
+        assertNull(Student.validateStudentId("12345678"));
+    }
+
+    @Test
+    public void testInvalidStudentId() {
+        assertNotNull(Student.validateStudentId("123"));
+    }
+
+    @Test
+    public void testValidDate() {
+        assertNull(Transaction.validateDate("18/04/2026"));
+    }
+
+    @Test
+    public void testInvalidDate() {
+        assertNotNull(Transaction.validateDate("31/02/2026"));
+    }
+}
