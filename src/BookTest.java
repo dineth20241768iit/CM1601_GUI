@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import models.Book;
-import models.Student;
-import models.Transaction;
+import model.Book;
+import model.Student;
+import model.Transaction;
 
 public class BookTest {
 
