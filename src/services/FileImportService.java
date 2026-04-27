@@ -143,7 +143,7 @@ public class FileImportService {
             String dateErr = Transaction.validateDate(row[0].trim());
             if (dateErr != null) errors.add(dateErr);
 
-            int type = -1;
+            int type;
             try {
                 type = Integer.parseInt(row[3].trim());
                 String typeErr = Transaction.validateTransactionType(type);
